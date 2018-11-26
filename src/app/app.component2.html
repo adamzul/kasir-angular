@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+      <div class="todos" *ngIf="barangsList">
+        <table class="table">
+          <thead class="h">
+            <tr class="h">
+              <!-- <th class="h">Id</th> -->
+              <th class="h">nama</th>
+              <th class="h">deskripsi</th>
+              <th class="h">jumlah</th>
+              <th class="h">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="barang" (dblclick)="updateBarang(barang)" *ngFor="let barang of barangsList">
+
+              <ng-container *ngIf="!updateBarangs.includes(barang); else editBarang">
+                <!-- <td>{{todo._id}}</td> -->
+                <td>{{barang.nama}}</td>
+                <td>{{barang.deskripsi}}</td>
+                <td>{{barang.jumlah}}</td>
+              </ng-container>
+
+              <ng-template #editBarang>
+                  <td><input type="text" name="nama" id="nama" (keypress)="submitBarang($event, barang)" [(ngModel)]="barang.nama" placeholder="nama" class="form-control"></td>
+                  <td><input type="text" name="barang" id="barang" (keypress)="submitBarang($event, barang)" [(ngModel)]="barang.deskripsi" placeholder="deskripsi"
+                      class="form-control"></td>
+                  <td>
+                    <input type="text" name="jumlah" id="jumlah" (keypress)="submitBarang($event, barang)" [(ngModel)]="barang.jumlah" placeholder="jumlah" class="form-control">
+                  </td>
+              </ng-template>
+
+              <td class="o">
+                <button class="btn btn-primary" (click)="updateBarang(barang)">
+                    <i  class="fa fa-pencil"></i>
+                  </button>
+                <button class="btn btn-danger" (click)="deleteBarang(barang)">
+                    <i  class="fa fa-trash"></i>
+                  </button>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <form>
+        <div class="form-row">
+
+          <div class="col-md-3">
+            <input type="text" name="nama" id="nama" [(ngModel)]="newBarang.nama" placeholder="nama" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <input name="deskripsi" id="deskripsi" [(ngModel)]="newBarang.deskripsi" placeholder="deskripsi" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <input name="jumlah" id="jumlah" [(ngModel)]="newBarang.jumlah" placeholder="jumlah" class="form-control">
+          </div>
+          <div class="col-md-3">
+            <button type="submit" class="btn btn-primary" (click)="createBarang()">Add</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-2">
+      
+    </div>
+  </div>
+</div>

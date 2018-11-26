@@ -1,0 +1,192 @@
+<div class="page-content">
+	<!-- BEGIN PAGE HEADER-->
+	<!-- BEGIN THEME PANEL -->
+	
+	<!-- END THEME PANEL -->
+	<!-- BEGIN PAGE BAR -->
+	<div class="page-bar">
+		<ul class="page-breadcrumb">
+			<li>
+				<a href="index.html">Home</a>
+				<i class="fa fa-circle"></i>
+			</li>
+			<li>
+				<span>Components</span>
+			</li>
+		</ul>
+		<div class="page-toolbar">
+			<div class="btn-group pull-right">
+				<button type="button" class="btn green btn-sm btn-outline dropdown-toggle" data-toggle="dropdown"> Actions
+					<i class="fa fa-angle-down"></i>
+				</button>
+				<ul class="dropdown-menu pull-right" role="menu">
+					<li>
+						<a href="#">
+							<i class="icon-bell"></i> Action</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="icon-shield"></i> Another action</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="icon-user"></i> Something else here</a>
+					</li>
+					<li class="divider"> </li>
+					<li>
+						<a href="#">
+							<i class="icon-bag"></i> Separated link</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- END PAGE BAR -->
+	<!-- BEGIN PAGE TITLE-->
+	<h1 class="page-title"> Context Menu
+		<small>context menu based on bootstrap dropdown menu</small>
+	</h1>
+	<!-- END PAGE TITLE-->
+	<!-- END PAGE HEADER-->
+	
+	<div id="context-menu2">
+		<ul class="dropdown-menu pull-left" role="menu">
+			<li>
+				<a href="http://www.keenthemes.com" target="_blank" data-url="true">
+					<i class="icon-user"></i> External URL </a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<i class="icon-present"></i> New Event
+					<span class="badge badge-success">4</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<i class="icon-basket"></i> New order </a>
+			</li>
+			<li class="divider"> </li>
+			<li>
+				<a href="javascript:;">
+					<i class="icon-flag"></i> Pending Orders
+					<span class="badge badge-danger">4</span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<i class="icon-users"></i> Pending Users
+					<span class="badge badge-warning">12</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<!-- BEGIN PORTLET-->
+			<div class="portlet light bordered">
+				<div class="portlet-title">
+					<div class="caption font-red-intense">
+						<i class="icon-speech font-red-intense"></i>
+						<span class="caption-subject bold uppercase"> Demo 3</span>
+						<span class="caption-helper">fetch clicked menu item</span>
+					</div>
+					<div class="tools">
+						<a href="" class="collapse" data-original-title="" title=""> </a>
+						<a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>
+						<a href="" class="reload" data-original-title="" title=""> </a>
+						<a href="" class="fullscreen" data-original-title="" title=""> </a>
+						<a href="" class="remove" data-original-title="" title=""> </a>
+					</div>
+				</div>
+				<div class="portlet-body">
+					<ng-container >
+			<div class="form-group">
+				<label for="nama">nama</label>
+				<input type="text" class="form-control" id="nama" placeholder="nama" [(ngModel)]="newBarang.nama" >
+			</div>
+			<div class="form-group">
+				<label for="deskripsi">deskripsi</label>
+				<input type="text" class="form-control" id="deskripsi" placeholder="deskripsi" [(ngModel)]="newBarang.deskripsi" >
+			</div>
+
+		</ng-container>
+		<button (click)="createBarang(newBarang)" class="btn btn-primary">create</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<!-- BEGIN PORTLET-->
+			<div class="portlet light bordered">
+				<div class="portlet-title">
+					<div class="caption font-red-intense">
+						<i class="icon-speech font-red-intense"></i>
+						<span class="caption-subject bold uppercase"> Demo 3</span>
+						<span class="caption-helper">fetch clicked menu item</span>
+					</div>
+					<div class="tools">
+						<a href="" class="collapse" data-original-title="" title=""> </a>
+						<a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>
+						<a href="" class="reload" data-original-title="" title=""> </a>
+						<a href="" class="fullscreen" data-original-title="" title=""> </a>
+						<a href="" class="remove" data-original-title="" title=""> </a>
+					</div>
+				</div>
+				<div class="portlet-body">
+					<div class="todos" *ngIf="barangList">
+							<table class="table table-striped table-bordered">
+								<thead class="h">
+									<tr class="h">
+										<!-- <th class="h">Id</th> -->
+										<th *ngFor="let tableHeader of tableHeaderList">{{tableHeader}}</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="barang" (dblclick)="updateBarang(item)" *ngFor="let item of barangList">
+
+										<ng-container *ngIf="!updateBarangList.includes(item); else editItem">
+											<!-- <td>{{todo._id}}</td> -->
+											<td> {{item.nama}} </td>
+											<td> {{item.deskripsi}} </td>
+											<td> {{item.jumlah}} </td>
+										</ng-container>
+
+										<ng-template #editItem>
+												<td >
+													<input type="text" name="nama" id="nama" (keypress)="submitBarang($event, item)" [(ngModel)]="item.nama" placeholder="nama" class="form-control">
+												</td>
+												<td >
+													<input type="text" name="deskripsi" id="deskripsi" (keypress)="submitBarang($event, item)" [(ngModel)]="item.deskripsi" placeholder="deskripsi" class="form-control">
+												</td>
+												<td> {{item.jumlah}} </td>
+
+												
+												
+										</ng-template>
+
+										<td class="o">
+											<button class="btn btn-primary" (click)="updateBarang(item)">
+													<i  class="fa fa-pencil"></i>
+												</button>
+											<button class="btn btn-danger" (click)="deleteBarang(item)">
+													<i  class="fa fa-trash"></i>
+												</button>
+										</td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- <app-datatable [itemList]="barangList" [tableHeaderList]="tableHeader"></app-datatable> -->
+
+</div>
