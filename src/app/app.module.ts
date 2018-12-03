@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 
 import {BarangService} from './services/barang.service';
 import {TransaksiBarangService} from './services/transaksi-barang.service';
+import {LoginService} from './services/login.service';
 
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
@@ -17,6 +18,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MasterBarangComponent } from './master-barang/master-barang.component';
 import { TambahJumlahBarangComponent } from './tambah-jumlah-barang/tambah-jumlah-barang.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { TambahJumlahBarangComponent } from './tambah-jumlah-barang/tambah-jumla
     BodyComponent,
     SidebarComponent,
     MasterBarangComponent,
-    TambahJumlahBarangComponent
+    TambahJumlahBarangComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { TambahJumlahBarangComponent } from './tambah-jumlah-barang/tambah-jumla
     BrowserAnimationsModule,
     MatTableModule
   ],
-  providers: [BarangService, TransaksiBarangService],
+  providers: [BarangService, TransaksiBarangService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

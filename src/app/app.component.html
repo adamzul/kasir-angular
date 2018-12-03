@@ -1,3 +1,4 @@
+<ng-container *ngIf="logedIn; else login" >
         <div class="page-wrapper">
             <!-- BEGIN HEADER -->
             <app-header></app-header>
@@ -45,3 +46,9 @@
 <![endif]-->
         <!-- BEGIN CORE PLUGINS -->
         
+</ng-container>
+<ng-template #login >
+    <div class="login">
+        <app-login></app-login>
+    </div>
+</ng-template>

@@ -13,15 +13,11 @@ import { Barang } from './models/barang.model';
 }) 
 export class AppComponent implements OnInit{
   title = 'penjualan-angular';
-  public newBarang = new Barang();
-  public tesBarang:Barang[] = [{_id:"1212",nama:"sikat gigi", deskripsi:"sikat gigi", jumlah:10}]; 
-  barangsList: Barang[];
-  updateBarangs: Barang[] = [];
-
-  constructor(private barangService:BarangService){}
+  logedIn:boolean;
+  constructor(){}
 
   ngOnInit():void{
-  	
+  	this.logedIn = (localStorage.getItem('jwtToken') != null);
   }
 
   
